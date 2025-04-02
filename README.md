@@ -1,12 +1,41 @@
-# React + Vite
+# User Profile Site with React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a React-based web application designed to display a user's profile. It is built using Vite for fast development and includes essential tools like HMR (Hot Module Replacement) and ESLint for code quality.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User Profile Display**: Showcase user details such as name, bio, and profile picture.
+- **React + Vite**: Leverages the speed and simplicity of Vite for development.
+- **Fast Refresh**: Instant updates during development using [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) or [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc).
+- **Customizable**: Easily extendable to include additional user details or features.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Follow these steps to set up and run the project locally:
+
+1. **Clone the Repository**:
+   ```bash
+   git clone <repository-url>
+   cd <repository-folder>
+
+
+
+2. **Install Dependencies**:
+    ```bash
+npm install
+
+3. **Run the Development Server:**:
+    ```bash
+npm run dev
+
+
+4. **Build for Production**:
+    ```bash
+npm run build
+
+
+5. **Preview the Production Build**:
+    ```bash
+npm run preview
+
+
