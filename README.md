@@ -22,20 +22,20 @@ Follow these steps to set up and run the project locally:
 
 2. **Install Dependencies**:
     ```bash
-npm install
+    npm install
 
 3. **Run the Development Server:**:
     ```bash
-npm run dev
+    npm run dev
 
 
 4. **Build for Production**:
     ```bash
-npm run build
+    npm run build
 
 
 5. **Preview the Production Build**:
     ```bash
-npm run preview
+    npm run preview
 
 
