@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { handleLogin } from '../utils/utils';
+import { useAuth } from '../authContext';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const { setToken, setUser } = useAuth();
   const [formData, setFormData] = useState({
     username: '',
     password: ''
@@ -14,10 +18,18 @@ const LoginPage = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log('Login submitted:', formData);
+    try{
+        const { user, access } = await handleLogin(formData.username, formData.password);
+        setToken(access);
+        setUser(user);
+        navigate('/');
+    }
+    catch(err){
+      console.log(err);
+    }
+    
   };
 
   return (
