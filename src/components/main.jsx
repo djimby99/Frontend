@@ -6,8 +6,8 @@ import { useAuth } from '../authContext';
 const Main = () => {
 const {user} =useAuth();
   const [profile, setProfile] = useState({
-    name: user.first_name,
-    email: user.email,
+    name: 'Jenny Wilson',
+    email: 'j.wilson@example.com',
     description: 'Product designer with 5+ years of experience in UX/UI design.',
     image: '/api/placeholder/100/100'
   });
