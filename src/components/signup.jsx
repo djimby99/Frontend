@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate } from 'react-router-dom';
+import { handleSignup } from '../utils/utils';
 
 const SignupPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -15,9 +17,17 @@ const SignupPage = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    // Handle signup logic here
+    try {
+     const response = await  handleSignup(formData.username, formData.email, formData.password);
+     navigate('/login');
+    }
+    catch (error) {
+      console.error('Signup error:', error);
+      alert('Signup failed. Please try again.');  
+    }
+     
     console.log('Signup submitted:', formData);
   };
 
