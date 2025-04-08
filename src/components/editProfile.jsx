@@ -1,21 +1,18 @@
-import { useNavigate } from 'react-router';
-import React, { useState } from 'react';
+import { useActionData, useNavigate } from 'react-router';
+import React, { use, useState } from 'react';
+import { useAuth } from '../authContext';
+import { Form } from "react-router";
+import { useFetcher } from "react-router";
 
-export async function clientLoader({
-    params,
-  }) {
-    const res = await fetch(`/api/products/${params.pid}`);
-    const product = await res.json();
-    return product;
-  }
-  
 
 const EditProfilePage = () => {
+  const fetcher =useFetcher();
+  let busy = fetcher.state !== "idle";
+  const actionData = useActionData();
+  const {setUser,user} = useAuth();
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
-      name: '',
-      email: '',
-      description: ''
+      ...user
     });
   
     const handleChange = (e) => {
@@ -26,12 +23,7 @@ const EditProfilePage = () => {
       });
     };
   
-    const handleSubmit = (e) => {
-      e.preventDefault();
-     
-      navigate('/');
-    };
-  
+
     return (
       <div className="p-6">
         <div className="flex items-center mb-6">
@@ -47,7 +39,7 @@ const EditProfilePage = () => {
         </div>
         
         <div className={`p-4 rounded-lg border shadow-sm   'bg-white border-gray-200`}>
-          <form onSubmit={handleSubmit}>
+          <fetcher.Form method="post" action="/edit">
             <div className="flex items-start gap-4 mb-6">
               <div className="avatar">
                 <div className="w-16 h-16 rounded-full">
@@ -57,12 +49,38 @@ const EditProfilePage = () => {
               <div className="flex-1">
                 <div className="mb-4">
                   <label className={`block text-sm font-medium mb-1   text-gray-700`}>
-                    Name
+                    First Name
                   </label>
                   <input
                     type="text"
-                    name="name"
-                    value={formData.name}
+                    name="first_name"
+                    value={formData.first_name}
+                    onChange={handleChange}
+                    className={`w-full p-2 rounded border   border-gray-60 bg-white border-gray-300`}
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className={`block text-sm font-medium mb-1   text-gray-700`}>
+                    Last Name
+                  </label>
+                  <input
+                    type="text"
+                    name="last_name"
+                    value={formData.last_name}
+                    onChange={handleChange}
+                    className={`w-full p-2 rounded border   border-gray-60 bg-white border-gray-300`}
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className={`block text-sm font-medium mb-1   text-gray-700`}>
+                    Username
+                  </label>
+                  <input
+                    type="text"
+                    name="username"
+                    value={formData.username}
                     onChange={handleChange}
                     className={`w-full p-2 rounded border   border-gray-60 bg-white border-gray-300`}
                     required
@@ -81,7 +99,7 @@ const EditProfilePage = () => {
                     required
                   />
                 </div>
-                <div className="mb-6">
+                {/* <div className="mb-6">
                   <label className={`block text-sm font-medium mb-1 text-gray-700`}>
                     Description
                   </label>
@@ -92,7 +110,7 @@ const EditProfilePage = () => {
                     rows="4"
                     className={`w-full p-2 rounded border   border-gray-60 bg-white border-gray-300`}
                   ></textarea>
-                </div>
+                </div> */}
               </div>
             </div>
             
@@ -108,10 +126,10 @@ const EditProfilePage = () => {
                 type="submit"
                 className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
               >
-                Save Changes
+                {busy ? "Saving..." : " Save Changes"}
               </button>
             </div>
-          </form>
+         </fetcher.Form >
         </div>
       </div>
     );

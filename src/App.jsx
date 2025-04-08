@@ -7,6 +7,7 @@ import EditProfilePage from "./components/editProfile";
 import { AuthProvider } from "./authContext";
 import LoginPage from "./components/login";
 import SignupPage from "./components/signup";
+import { editAction } from "./actions/editaction";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/edit",
     element: <EditProfilePage />,
+    action: async({request})=>{
+      const response = await editAction({request});
+      return response;
+    }
   },
   {
     path: "/login",

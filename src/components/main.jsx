@@ -4,7 +4,7 @@ import { useAuth } from '../authContext';
 
 
 const Main = () => {
-const {user} =useAuth();
+const {user} = useAuth();
   const [profile, setProfile] = useState({
     name: 'Jenny Wilson',
     email: 'j.wilson@example.com',
