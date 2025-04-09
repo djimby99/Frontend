@@ -1,14 +1,15 @@
 import { useActionData, useNavigate } from 'react-router';
 import React, { use, useState } from 'react';
 import { useAuth } from '../authContext';
-import { Form } from "react-router";
+
 import { useFetcher } from "react-router";
 
 
 const EditProfilePage = () => {
-  const fetcher =useFetcher();
+  const fetcher = useFetcher();
   let busy = fetcher.state !== "idle";
   const actionData = useActionData();
+  console.log(actionData);
   const {setUser,user} = useAuth();
     const navigate = useNavigate();
     const [formData, setFormData] = useState({

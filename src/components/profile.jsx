@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router";
 
 const ProfilePage = ({ profile }) => {
+  console.log(profile);
   return (
     <div className="p-6 bg-white">
       <div className="max-w-4xl mx-auto">
@@ -19,10 +20,10 @@ const ProfilePage = ({ profile }) => {
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-4">
                 <div className="w-16 h-16 rounded-full overflow-hidden">
-                  <img src={profile.image} alt={profile.name} className="w-full h-full object-cover" />
+                  <img src={profile.image} alt={profile.first_name} className="w-full h-full object-cover" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900">{profile.name}</h3>
+                <h3 className="text-xl font-bold text-gray-900">{profile.first_name}</h3>
                   <p className="text-gray-600">{profile.email}</p>
                   <p className="mt-1 text-gray-800">{profile.description}</p>
                 </div>

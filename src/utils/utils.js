@@ -1,14 +1,16 @@
 
-import { useAxios } from '../api';
+import { UseAxios } from '../api';
 
-const axios = useAxios();
+const {axiosInstance} = UseAxios();
 export const handleLogin = async (username, password) => {
+    
     try{
-        const response = await axios.post('http://127.0.0.1:8000/api/login/', {
+        const response = await axiosInstance.post('http://127.0.0.1:8000/api/login/', {
             username,
             password,
          });
         const { access, user } = response.data;
+        console.log('Login response:', response.data);
         return { access, user };
 
     }

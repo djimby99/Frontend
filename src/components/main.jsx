@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import ProfilePage from './profile';
 import { useAuth } from '../authContext';
+import { useLoaderData } from 'react-router';
 
-
+export async function Loader(){
+  const storedUser = localStorage.getItem('user');
+  return JSON.parse(storedUser);
+}
 const Main = () => {
-const {user} = useAuth();
+  const loaderData = useLoaderData()
+// const {user} = useAuth();
   const [profile, setProfile] = useState({
-    name: 'Jenny Wilson',
-    email: 'j.wilson@example.com',
-    description: 'Product designer with 5+ years of experience in UX/UI design.',
-    image: '/api/placeholder/100/100'
+    loaderData
   });
 
  
   
-  console.log(user);
+
  
   return (
     <>

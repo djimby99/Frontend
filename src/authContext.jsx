@@ -1,14 +1,24 @@
 // AuthContext.tsx
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const AuthContext = createContext(undefined);
 
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(null);
-  const [user, setUser] = useState(null); 
+  const [user, setUser] = useState(); 
+
+  const storedUser = localStorage.getItem('user');
+  const storedToken = localStorage.getItem('access');
+
+useEffect(() => {
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+
+  }
+, [storedUser]);
 
   return (
-    <AuthContext.Provider value={{ token, setToken , user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser }}>
       {children}
     </AuthContext.Provider>
   );

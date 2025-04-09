@@ -5,7 +5,7 @@ import { useAuth } from '../authContext';
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const { setToken, setUser } = useAuth();
+  const {  setUser } = useAuth();
   const [formData, setFormData] = useState({
     username: '',
     password: ''
@@ -22,7 +22,10 @@ const LoginPage = () => {
     e.preventDefault();
     try{
         const { user, access } = await handleLogin(formData.username, formData.password);
-        setToken(access);
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+        localStorage.setItem('token', access);
+        localStorage.setItem('user', JSON.stringify(user));
         setUser(user);
         navigate('/');
     }
