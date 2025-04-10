@@ -11,19 +11,17 @@ export const AuthProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Check if user is already logged in by checking token in localStorage
     const token = localStorage.getItem('token');
     if (token) {
       try {
         const decoded = jwtDecode(token);
-        // Check if token has expired
         if (decoded.exp * 1000 < Date.now()) {
           localStorage.removeItem('token');
           setCurrentUser(null);
-        } else {
-          // Load user data
-          fetchUserData();
-        }
+        } 
+        // else {
+        //   fetchUserData();
+        // }
       } catch (err) {
         localStorage.removeItem('token');
         setCurrentUser(null);
@@ -57,7 +55,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (credentials) => {
     try {
       const response = await api.post('/login/', credentials);
-      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('token', response.data.access);
       setCurrentUser(response.data.user);
       return response.data;
     } catch (err) {
@@ -70,7 +68,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await api.put('/update-profile/', profileData);
 
-      setCurrentUser(response.data);
+      setCurrentUser(response.data.data);
       return response.data;
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to update profile');
