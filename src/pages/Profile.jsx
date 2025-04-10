@@ -5,6 +5,7 @@ import { AuthContext } from '../context/AuthContext';
 
 const Profile = () => {
   const { currentUser } = useContext(AuthContext);
+  console.log(currentUser);
 
   if (!currentUser) {
     return (
@@ -19,7 +20,6 @@ const Profile = () => {
     );
   }
 
-  // Get first letter of name or email for avatar
   const getInitial = () => {
     if (currentUser.first_name) return currentUser.first_name.charAt(0).toUpperCase();
     return currentUser.email.charAt(0).toUpperCase();
@@ -29,7 +29,6 @@ const Profile = () => {
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-lg mx-auto">
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-          {/* Header with gradient background */}
           <div className="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-8 relative">
             <div className="absolute top-4 right-4">
               <Link
@@ -42,19 +41,15 @@ const Profile = () => {
             </div>
             
             <div className="flex flex-col items-center">
-              {/* Profile Avatar */}
               <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center text-3xl text-indigo-600 font-bold shadow-lg">
                 {getInitial()}
               </div>
-              
-              {/* Name */}
               <h1 className="mt-4 text-xl font-bold text-white">
                 {currentUser.first_name && currentUser.last_name 
                   ? `${currentUser.first_name} ${currentUser.last_name}`
                   : 'Your Profile'}
               </h1>
               
-              {/* Email underneath */}
               <p className="text-indigo-100 mt-1 flex items-center gap-1">
                 <span className="text-xs mr-1">✉️</span>
                 {currentUser.email}
@@ -62,7 +57,6 @@ const Profile = () => {
             </div>
           </div>
           
-          {/* Profile Information */}
           <div className="px-6 py-6">
             <h2 className="text-lg font-semibold text-gray-800 mb-4">Personal Information</h2>
             
@@ -122,7 +116,6 @@ const Profile = () => {
           </div>
         </div>
         
-        {/* Additional actions */}
         <div className="mt-6 px-2">
           <div className="flex justify-between items-center space-x-4">
             <Link to="/settings" className="text-gray-600 hover:text-indigo-600 text-sm font-medium">
