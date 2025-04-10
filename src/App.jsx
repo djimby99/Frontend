@@ -1,48 +1,55 @@
-import "./App.css";
-import { createBrowserRouter, RouterProvider } from "react-router";
+// src/App.js
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Profile from './pages/Profile';
+import EditProfile from './pages/EditProfile';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './pages/ProtectedRoutes';
 
-import React from "react";
-import Main, { Loader } from "./components/main";
-import EditProfilePage from "./components/editProfile";
-import { AuthProvider } from "./authContext";
-import LoginPage from "./components/login";
-import SignupPage from "./components/signup";
-import EditAction from "./actions/editaction";
-
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Main />,
-    loader: async () => await Loader()
-  },
-  {
-    path: "/edit",
-    element: <EditProfilePage />,
-    action: async({request})=>{
-      const response = await EditAction({request});
-      console.log(response);
-      return response;
-    }
-  },
-  {
-    path: "/login",
-    element: <LoginPage />,
-  },
-  {
-    path: "/signup",
-    element: <SignupPage />,
-  }
-]);
 
 function App() {
   return (
-    <>
-      <AuthProvider>
-        <RouterProvider router={router} />
-      </AuthProvider>
-    </>
+    <AuthProvider>
+      <Router>
+        <div className="min-h-screen bg-gray-50">
+          <Navbar />
+          <div className="container mx-auto px-4 py-8">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/profile" element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              } />
+              <Route path="/edit-profile" element={
+                <ProtectedRoute>
+                  <EditProfile />
+                </ProtectedRoute>
+              } />
+            </Routes>
+          </div>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+// src/pages/EditProfile.js
+
+
