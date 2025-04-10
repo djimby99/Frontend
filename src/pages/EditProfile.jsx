@@ -41,7 +41,7 @@ const EditProfile = () => {
       setError('');
       
       await updateProfile(formData);
-      // navigate('/profile');
+      navigate('/profile');
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to update profile');
     } finally {
