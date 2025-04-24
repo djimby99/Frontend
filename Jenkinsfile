@@ -3,11 +3,9 @@ pipeline {
   stages {
     stage('List all files') {
       steps {
-        sh 'ls -la'
+        sh 'docker docker build -t latest .'
       }
     }
-
-
 
   }
   environment {
