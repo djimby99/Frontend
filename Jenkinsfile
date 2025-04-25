@@ -18,7 +18,8 @@ pipeline {
       steps {
         sh 'ls -l'
         sh '''cd ..
-ls -l'''
+ls -l
+cd Frontend_main'''
       }
     }
 
