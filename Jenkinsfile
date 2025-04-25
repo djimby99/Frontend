@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('List all files') {
       steps {
-        sh 'sudo docker build -t latest .'
+        sh 'docker build -t latest .'
       }
     }
 
