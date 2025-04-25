@@ -17,7 +17,7 @@ pipeline {
 
   }
   environment {
-    BACKEND_URL = 'https://github.com/AWS-ODC-P4-C1/Backend.git'
+    BACKEND_URL = 'https://github.com/madicke12/Backend.git'
     FRONTEND_URL = 'https://github.com/AWS-ODC-P4-C1/Frontend.git'
   }
 }
