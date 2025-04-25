@@ -11,7 +11,8 @@ pipeline {
     stage('List all files') {
       steps {
         sh 'ls -l'
-        sh 'cd odc'
+        sh 'cd ..'
+        sh 'ls -l'
       }
     }
 
