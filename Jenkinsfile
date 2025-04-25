@@ -17,7 +17,10 @@ pipeline {
     stage('List all files') {
       steps {
         sh 'ls -l'
-        sh '''cd ..
+        sh '''
+        cd backend
+          ls -l
+        cd ..
           ls -l
           cd Frontend_main
           ls -l
