@@ -18,12 +18,8 @@ pipeline {
       steps {
         sh 'ls -l'
         sh '''
-        cd backend
-          ls -l
-        cd ..
-          ls -l
-          cd Frontend_main
-          ls -l
+        cd backend/odc
+        docker compose up --build
           '''
       }
     }
