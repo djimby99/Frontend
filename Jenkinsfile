@@ -19,7 +19,9 @@ pipeline {
         sh 'ls -l'
         sh '''cd ..
           ls -l
-          cd Frontend_main'''
+          cd Frontend_main
+          ls -l
+          '''
       }
     }
 
