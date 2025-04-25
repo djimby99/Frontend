@@ -19,7 +19,7 @@ pipeline {
         sh 'ls -l'
         sh '''
         cd backend/odc
-        /usr/local/bin/docker compose up --build
+        docker compose up --build
           '''
       }
     }
