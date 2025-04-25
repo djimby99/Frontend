@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('List all files') {
       steps {
-        sh 'export PATH=/usr/local/bin:$PATH && docker build -t latest .'
+        sh 'sudo docker build -t latest .'
       }
     }
 
