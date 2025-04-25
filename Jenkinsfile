@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git branch: 'madicke', url: '${BACKEND_URL}'
+        git branch: 'madicke', url: "${BACKEND_URL}"
       }
     }
 
