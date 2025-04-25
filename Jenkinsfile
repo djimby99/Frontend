@@ -15,6 +15,7 @@ pipeline {
       steps {
         sh 'ls -l'      
         }
+        sh 'cd odc'
     }
 
   }
