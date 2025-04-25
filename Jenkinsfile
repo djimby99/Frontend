@@ -11,14 +11,13 @@ pipeline {
     stage('List all files') {
       steps {
         sh 'ls -l'
-        sh 'cd ..'
-        sh 'ls -l'
+        sh 'cd odc'
       }
     }
 
   }
   environment {
-    BACKEND_URL = 'https://github.com/madicke12/Backend.git'
+    BACKEND_URL = 'https://github.com/AWS-ODC-P4-C1/Backend.git'
     FRONTEND_URL = 'https://github.com/AWS-ODC-P4-C1/Frontend.git'
   }
 }
