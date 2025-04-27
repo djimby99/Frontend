@@ -36,7 +36,7 @@ const Profile = () => {
                 className="flex items-center gap-1 bg-white bg-opacity-20 hover:bg-opacity-30 px-3 py-1.5 rounded-full text-white text-sm font-medium transition-all"
               >
                 <span className="text-xs mr-1">✏️</span>
-                <span>Edit</span>
+                <span>Edit your Profile</span>
               </Link>
             </div>
             
