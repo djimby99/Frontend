@@ -16,11 +16,14 @@ pipeline {
 
     stage('List all files') {
       steps {
-        sh 'ls -l'
-        sh '''
+         sh '''
         cd backend/odc
-        docker compose up --build
-          '''
+        docker compose  build
+        docker tag backend madicke12/backend:latest
+        docker tag frontend madicke12/frontend:latest
+        docker push madicke12/backend:latest
+        docker push madicke12/frontend:latest
+        '''
       }
     }
 
