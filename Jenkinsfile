@@ -31,5 +31,6 @@ pipeline {
   environment {
     BACKEND_URL = 'https://github.com/AWS-ODC-P4-C1/Backend.git'
     FRONTEND_URL = 'https://github.com/AWS-ODC-P4-C1/Frontend.git'
+    PATH = "C:\\Program Files\\Docker\\Docker\\resources\\bin;${env.PATH}"
   }
 }
