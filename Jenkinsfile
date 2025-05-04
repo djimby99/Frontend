@@ -19,10 +19,10 @@ pipeline {
          sh '''
         cd backend/odc
         docker compose  build
-        docker tag backend madicke12/backend:latest
-        docker tag frontend madicke12/frontend:latest
-        docker push madicke12/backend:latest
-        docker push madicke12/frontend:latest
+        docker tag backend djimby/backend:latest
+        docker tag frontend djimby/frontend:latest
+        docker push djimby/backend:latest
+        docker push djimby/frontend:latest
         '''
       }
     }
